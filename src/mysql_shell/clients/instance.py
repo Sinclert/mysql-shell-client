@@ -224,8 +224,8 @@ class MySQLInstanceClient:
 
         try:
             rows = self._executor.execute_sql(query)
-        except ExecutionError:
-            logger.error("Failed to get cluster labels")
+        except ExecutionError as exc:
+            logger.debug(f"Failed to get cluster labels: {exc}")
             raise
         else:
             return [row["cluster_name"] for row in rows]
