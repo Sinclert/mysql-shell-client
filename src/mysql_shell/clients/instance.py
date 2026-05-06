@@ -5,7 +5,7 @@ import json
 import logging
 from typing import Any, Mapping, Sequence
 
-from ..builders import StringQueryQuoter
+from ..builders import QueryQuoter
 from ..executors import BaseExecutor
 from ..executors.errors import ExecutionError
 from ..models.account import Role, User
@@ -17,10 +17,10 @@ logger = logging.getLogger()
 _Attrs = Mapping[str, str] | None
 
 
-class MySQLInstanceClient:
+class InstanceClient:
     """Class to encapsulate all instance operations using MySQL Shell."""
 
-    def __init__(self, executor: BaseExecutor, quoter: StringQueryQuoter):
+    def __init__(self, executor: BaseExecutor, quoter: QueryQuoter):
         """Initialize the class."""
         self._executor = executor
         self._quoter = quoter
